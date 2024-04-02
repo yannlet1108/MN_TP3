@@ -1,0 +1,10 @@
+2 /
+
+4. test_complexe2 fait une addition entre les complexes 1+2i et 3+6i.
+Le résultat est bien 4 + 8i.
+Ensuite il fait 512 addition successive et le résultat obtenu correspond bien à cd1 + 512*cd2.
+
+6. L'exécution de test_complexe3 est plus rapide d'un rapport 100.
+Cela s'explique par l'utilisation de fonction inlinées.
+
+BLAS1:
