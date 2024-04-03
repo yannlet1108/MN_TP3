@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "Run selected program",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "preLaunchTask": "makelldb: selected file"
+    },
+    {
+      "request": "launch",
+      "name": "Run new target",
+      "type": "makelldb"
+    }
+  ],
+  "version": "0.2.0"
+}

@@ -4,7 +4,7 @@
 #include "mnblas.h"
 #include "complexe.h"
 
-#define SIZE 10
+#define SIZE 3
 
 int main(int argc, char **argv)
 {
