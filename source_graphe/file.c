@@ -1,6 +1,5 @@
 #include <stdlib.h>
 
-#include "graphe.h"
 #include "file.h"
 
 pfile_t creer_file()

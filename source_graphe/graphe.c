@@ -7,8 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <stdbool.h>
 
-#include "graphe.h"
+//#include "graphe.h"
+#include "file.h"
 
 psommet_t chercher_sommet(pgraphe_t g, int label)
 {
@@ -162,11 +164,58 @@ int colorier_graphe(pgraphe_t g)
   return max_couleur;
 }
 
+bool appartient_tableau(psommet_t *tableau, psommet_t p, pgraphe_t g) {
+  //vérifie si le sommet p apparteant au graphe g a déjà ete visité
+  int i = 0;
+  while (tableau[i] != NULL && i < nombre_sommets(g)) {
+    if (tableau[i] == p) {
+      return true;
+    }
+    i++;
+  }
+  return false;
+}
+
+// TODO: régler le cas où le sommet de départ n'est pas dans le graphe
 void afficher_graphe_largeur(pgraphe_t g, int r)
 {
   /*
     afficher les sommets du graphe avec un parcours en largeur
   */
+
+  psommet_t sommet = chercher_sommet(g, r);
+  parc_t arc;
+
+  pfile_t sommets_a_visiter = creer_file();
+  enfiler(sommets_a_visiter, sommet);
+
+  // mémorisation des sommets déjà visités à l'aide d'un tableau
+  int taille = nombre_sommets(g);
+  psommet_t sommets_visites[taille];
+  sommets_visites[0] = sommet;
+
+  int nb_sommets_visites = 0;
+  int indice_sommet_actuel = 1;
+
+  while (!file_vide(sommets_a_visiter))
+  {
+    sommet = defiler(sommets_a_visiter);
+    printf("Sommet %d\n", sommet->label);
+    nb_sommets_visites++;
+    arc = sommet->liste_arcs;
+
+    while (arc != NULL)
+    {
+      if (!appartient_tableau(sommets_visites, arc->dest, g)) {
+        enfiler(sommets_a_visiter, arc->dest);
+        sommets_visites[indice_sommet_actuel] = arc->dest;
+        indice_sommet_actuel++;
+      }
+      arc = arc->arc_suivant;
+    }
+  }
+
+  printf("Nombre de sommets visités : %d\n", nb_sommets_visites);
 
   return;
 }

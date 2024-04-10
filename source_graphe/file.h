@@ -1,5 +1,6 @@
 #define MAX_FILE_SIZE       100
 
+#include "graphe.h"
 
 typedef struct {
   int tete ;

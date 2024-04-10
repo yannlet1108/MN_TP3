@@ -6,7 +6,7 @@
 int main (int argc, char **argv)
 {
   pgraphe_t g ;
-  int nc ;
+  //int nc ;
   
   if (argc != 2)
     {
@@ -26,6 +26,7 @@ int main (int argc, char **argv)
     la fonction ecrire_graphe affiche le graphe a l'ecran
   */  
   
+  /*
   printf ("nombre de sommets du graphe %d nombre arcs %d \n", nombre_sommets (g), nombre_arcs (g)) ;
   fflush (stdout) ;
   
@@ -36,4 +37,7 @@ int main (int argc, char **argv)
   printf ("nombre chromatique graphe = %d\n", nc) ;
 
   ecrire_graphe_colorie (g) ;
+  */
+
+  afficher_graphe_largeur(g, 1);
 }
